@@ -1,92 +1,34 @@
--- lakhtech: Supabase PostgreSQL schema + Row Level Security
--- Run in Supabase Dashboard > SQL Editor.
+-- Run in Supabase SQL Editor. Events are public via unguessable slugs; do not store private data here.
 create extension if not exists pgcrypto;
-
-create table if not exists public.profiles (
-  id uuid primary key references auth.users(id) on delete cascade,
-  display_name text not null default '',
+create table if not exists public.frame_events (
+  id uuid primary key default gen_random_uuid(),
+  slug text unique not null default encode(gen_random_bytes(8), 'hex'),
+  title text not null check (char_length(title) between 1 and 100),
+  frame_id text not null default 'green',
+  owner_id uuid references auth.users(id) on delete set null,
+  is_active boolean not null default true,
   created_at timestamptz not null default now()
 );
-
-create table if not exists public.campaigns (
+create table if not exists public.frame_submissions (
   id uuid primary key default gen_random_uuid(),
-  owner_id uuid not null references auth.users(id) on delete cascade,
-  name text not null check (char_length(name) between 1 and 70),
-  category text not null check (category in ('Community','Celebration','Awareness','Culture')),
-  description text not null default '',
-  frame_storage_path text,
-  is_published boolean not null default false,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  event_id uuid not null references public.frame_events(id) on delete cascade,
+  photo_path text,
+  display_name text,
+  created_at timestamptz not null default now()
 );
-
-create table if not exists public.campaign_supports (
-  id uuid primary key default gen_random_uuid(),
-  campaign_id uuid not null references public.campaigns(id) on delete cascade,
-  user_id uuid references auth.users(id) on delete set null,
-  created_at timestamptz not null default now(),
-  unique (campaign_id, user_id)
-);
-
-alter table public.profiles enable row level security;
-alter table public.campaigns enable row level security;
-alter table public.campaign_supports enable row level security;
-
-drop policy if exists "Profiles readable by owner" on public.profiles;
-create policy "Profiles readable by owner" on public.profiles for select using (auth.uid() = id);
-drop policy if exists "Users create own profile" on public.profiles;
-create policy "Users create own profile" on public.profiles for insert with check (auth.uid() = id);
-drop policy if exists "Users update own profile" on public.profiles;
-create policy "Users update own profile" on public.profiles for update using (auth.uid() = id) with check (auth.uid() = id);
-
-drop policy if exists "Published campaigns are public" on public.campaigns;
-create policy "Published campaigns are public" on public.campaigns for select using (is_published or auth.uid() = owner_id);
-drop policy if exists "Users create own campaigns" on public.campaigns;
-create policy "Users create own campaigns" on public.campaigns for insert with check (auth.uid() = owner_id);
-drop policy if exists "Owners update own campaigns" on public.campaigns;
-create policy "Owners update own campaigns" on public.campaigns for update using (auth.uid() = owner_id) with check (auth.uid() = owner_id);
-drop policy if exists "Owners delete own campaigns" on public.campaigns;
-create policy "Owners delete own campaigns" on public.campaigns for delete using (auth.uid() = owner_id);
-
-drop policy if exists "Support counts visible" on public.campaign_supports;
-create policy "Support counts visible" on public.campaign_supports for select using (true);
-drop policy if exists "Authenticated users support campaigns" on public.campaign_supports;
-create policy "Authenticated users support campaigns" on public.campaign_supports for insert with check (auth.uid() = user_id);
-drop policy if exists "Users remove own support" on public.campaign_supports;
-create policy "Users remove own support" on public.campaign_supports for delete using (auth.uid() = user_id);
-
--- Public read access for published frame overlays. Uploads are restricted to
--- authenticated users' own folder: <auth.uid()>/<filename>.
-insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('campaign-frames', 'campaign-frames', true, 8388608, array['image/png','image/webp','image/jpeg'])
-on conflict (id) do update set
-  public = excluded.public,
-  file_size_limit = excluded.file_size_limit,
-  allowed_mime_types = excluded.allowed_mime_types;
-
-drop policy if exists "Public can view campaign frames" on storage.objects;
-create policy "Public can view campaign frames"
-on storage.objects for select
-using (bucket_id = 'campaign-frames');
-
-drop policy if exists "Users upload frames to own folder" on storage.objects;
-create policy "Users upload frames to own folder"
-on storage.objects for insert to authenticated
-with check (
-  bucket_id = 'campaign-frames'
-  and (storage.foldername(name))[1] = auth.uid()::text
-);
-
-drop policy if exists "Users update frames in own folder" on storage.objects;
-create policy "Users update frames in own folder"
-on storage.objects for update to authenticated
-using (bucket_id = 'campaign-frames' and (storage.foldername(name))[1] = auth.uid()::text)
-with check (bucket_id = 'campaign-frames' and (storage.foldername(name))[1] = auth.uid()::text);
-
-drop policy if exists "Users delete frames in own folder" on storage.objects;
-create policy "Users delete frames in own folder"
-on storage.objects for delete to authenticated
-using (bucket_id = 'campaign-frames' and (storage.foldername(name))[1] = auth.uid()::text);
-
--- The frontend keeps personal portrait photos in the browser and does not upload them.
--- Note: if you later upload user portraits, use a separate PRIVATE bucket and stricter policies.
+alter table public.frame_events enable row level security;
+alter table public.frame_submissions enable row level security;
+-- Public visitors can view active event details. Only authenticated owners can manage their own events.
+drop policy if exists "Public can view active events" on public.frame_events;
+create policy "Public can view active events" on public.frame_events for select using (is_active = true);
+drop policy if exists "Owners can create events" on public.frame_events;
+create policy "Owners can create events" on public.frame_events for insert to authenticated with check (auth.uid() = owner_id);
+drop policy if exists "Owners can update events" on public.frame_events;
+create policy "Owners can update events" on public.frame_events for update to authenticated using (auth.uid() = owner_id) with check (auth.uid() = owner_id);
+drop policy if exists "Owners can delete events" on public.frame_events;
+create policy "Owners can delete events" on public.frame_events for delete to authenticated using (auth.uid() = owner_id);
+-- Visitors can submit a record only for active events. Configure Storage policies before accepting real photos.
+drop policy if exists "Visitors can submit to active events" on public.frame_submissions;
+create policy "Visitors can submit to active events" on public.frame_submissions for insert to anon, authenticated with check (exists (select 1 from public.frame_events e where e.id = event_id and e.is_active = true));
+drop policy if exists "Owners can view event submissions" on public.frame_submissions;
+create policy "Owners can view event submissions" on public.frame_submissions for select to authenticated using (exists (select 1 from public.frame_events e where e.id = event_id and e.owner_id = auth.uid()));

@@ -1,20 +1,22 @@
-# Lakshtech Frame Studio — Simple UI Prototype
+# Lakshtech Frame Studio
 
-A visual-first Hindi frame editor intended for users with varied digital literacy.
+A simple, mobile-first Hindi frame editor prototype for community events.
 
-## Run locally
-Open `index.html` in a modern browser. No build step is required.
+## Included
+- `index.html`: home page, frame gallery, local photo editor, event creation/share-link UI.
+- `backend/schema.sql`: Supabase tables and starter RLS policies for events and submissions.
+- `backend/supabase-config.example.js`: safe frontend config template (publishable/anon key only).
+- `vercel.json`: basic Vercel configuration.
 
-## Included interactions
-- Browse sample frames by category
-- Select a frame
-- Upload a local photo
-- Adjust zoom and brightness
-- Drag the photo to reposition it
-- Download the framed profile image as PNG
+## Important: current event link mode
+The event creation UI currently makes a demo URL and stores event metadata in the browser's local storage. It is **not yet a cross-device/live event link system**. For real sharing, connect Supabase using the project URL and publishable key, create events in `frame_events`, and resolve public event links by `slug`. Photo uploads should use a Supabase Storage bucket with carefully configured policies; never expose a service-role key in browser code.
 
-## Important current limitations
-This is a frontend prototype. The event-link button is a demo notice; it does not yet create public event pages. User accounts, frame management, saved projects, multi-user uploads, shareable campaign links, cloud storage, moderation, and Supabase persistence need to be connected and tested before production use.
+## Setup
+1. Create/open your Supabase project.
+2. Run `backend/schema.sql` in Supabase SQL Editor.
+3. Create a private or appropriately policy-restricted storage bucket for user uploads. Review storage policies before collecting real photos.
+4. Add Supabase URL and publishable/anon key to your frontend config and wire the event create/load/submit functions to Supabase.
+5. Deploy the folder containing `index.html` to Vercel.
 
-## Vercel
-Import this folder/repository into Vercel as a static site. `index.html` is the entry page. For the best deployment workflow, upload the folder to a Git repository and import it in Vercel.
+## Privacy
+This product handles people's photos. Tell users how photos are used, collect only what is needed, allow deletion, and set upload size/type limits. Public event links should use unguessable IDs and should not expose organizer-only submissions.
