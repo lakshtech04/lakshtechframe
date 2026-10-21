@@ -2,6 +2,6 @@
 // यहाँ केवल Supabase Project URL और PUBLIC anon/publishable key रखें.
 // कभी भी service_role या secret key को इस फाइल में न डालें.
 window.LAKHTECH_CONFIG = {
-  url: "https://YOUR_PROJECT_REF.supabase.co",
+  url: "https://vfnoovvnjfclnmlqsywl.supabase.co",
   anonKey: "YOUR_PUBLIC_ANON_OR_PUBLISHABLE_KEY"
 };
