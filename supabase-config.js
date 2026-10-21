@@ -3,5 +3,5 @@
 // कभी भी service_role या secret key को इस फाइल में न डालें.
 window.LAKHTECH_CONFIG = {
   url: "https://vfnoovvnjfclnmlqsywl.supabase.co",
-  anonKey: "YOUR_PUBLIC_ANON_OR_PUBLISHABLE_KEY"
+  anonKey: "sb_publishable_BEizLdqXuo8dQaiWktt8OQ_F41YGqFl"
 };
