@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Lakshtech — Tech Solution Provider. Website development, software solutions, digital design and photo frame tools.">
+<title>Lakhtech — बनाएँ। फ्रेम लगाएँ। साझा करें।</title>
+<style>
+:root{--ink:#182238;--muted:#69758a;--brand:#5a49e8;--brand2:#8e83ff;--bg:#f7f8fd;--line:#e6e9f2;--white:#fff;--green:#137b61;--shadow:0 18px 50px #1e24500d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.wrap{max-width:1180px;margin:auto;padding:0 24px}
+header{position:sticky;top:0;background:#ffffffed;backdrop-filter:blur(14px);z-index:10;border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:24px}.logo{font-size:23px;font-weight:900;letter-spacing:-.8px;display:flex;align-items:center;gap:10px}.mark{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;color:#fff;background:linear-gradient(135deg,var(--brand),#a59bff);box-shadow:0 7px 18px #5a49e833}.search{flex:1;max-width:420px;position:relative}.search input{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px 14px 12px 40px;background:#fafaff;outline-color:var(--brand)}.search:before{content:"⌕";position:absolute;left:14px;top:7px;font-size:23px;color:#8490a6}.navlinks{display:flex;gap:20px;align-items:center;color:#566177;font-weight:650;font-size:14px}.btn{border:0;border-radius:12px;padding:12px 17px;background:var(--brand);color:white;font-weight:800;box-shadow:0 8px 18px #5a49e82b}.btn:hover{filter:brightness(.95)}.btn.soft{background:#efedff;color:var(--brand);box-shadow:none}.btn.ghost{background:white;border:1px solid var(--line);color:var(--ink);box-shadow:none}.btn.small{padding:9px 12px;font-size:13px}.mobile{display:none}
+.hero{padding:42px 0 22px}.hero-panel{background:radial-gradient(circle at 82% 12%,#8f83ff88,transparent 29%),linear-gradient(120deg,#1d194b,#4f43c8 62%,#8075ff);border-radius:28px;padding:48px 54px;color:#fff;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;min-height:330px;overflow:hidden}.eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:1.8px;font-weight:850;color:#dcd8ff}.hero h1{font-size:clamp(38px,5vw,60px);line-height:1.02;letter-spacing:-2.5px;margin:15px 0}.hero p{max-width:490px;color:#e6e3ff;font-size:17px;margin:0 0 25px}.actions{display:flex;gap:12px;flex-wrap:wrap}.hero .btn{background:#fff;color:#3930a5;box-shadow:none}.hero .btn.soft{background:#ffffff1e;color:#fff;border:1px solid #ffffff4a}.art{height:250px;position:relative;display:grid;place-items:center}.mock{width:170px;height:212px;border:9px solid white;border-radius:90px 90px 20px 20px;position:relative;background:linear-gradient(140deg,#f3c7a5,#7772ef 65%,#302765);box-shadow:0 25px 60px #120d4c66;transform:rotate(4deg);overflow:hidden}.mock:before{content:"";position:absolute;width:66px;height:74px;border-radius:50%;background:#e6b28d;top:32px;left:43px;box-shadow:0 -12px 0 8px #352546}.mock:after{content:"";position:absolute;width:110px;height:88px;left:20px;bottom:0;border-radius:60px 60px 8px 8px;background:#ffda84}.float{position:absolute;width:85px;height:115px;border:5px solid #fff9;border-radius:14px;right:5%;top:18px;transform:rotate(12deg);background:linear-gradient(145deg,#ffa8c0,#ffe28c)}.float.two{left:4%;top:auto;bottom:10px;right:auto;transform:rotate(-12deg);background:linear-gradient(145deg,#91ead3,#8072ff)}.star{position:absolute;color:#ffe69c;font-size:31px}.star.a{left:22%;top:12px}.star.b{right:12%;bottom:18px}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:34px 0 18px}.sectionhead h2{font-size:25px;letter-spacing:-.5px;margin:0}.sectionhead p{color:var(--muted);margin:4px 0 0}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.chip{border:1px solid var(--line);border-radius:99px;background:#fff;color:#59647a;padding:8px 14px;font-size:13px;font-weight:750}.chip.active{background:#eeecff;border-color:#d8d2ff;color:var(--brand)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.campaign{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 4px 20px #1c204008;transition:.18s}.campaign:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.thumb{height:190px;display:grid;place-items:center;position:relative;overflow:hidden}.purple{background:linear-gradient(135deg,#e0dcff,#aaa1ff)}.orange{background:linear-gradient(135deg,#ffe0bd,#ffb2a5)}.green{background:linear-gradient(135deg,#b9f1df,#76c7b4)}.blue{background:linear-gradient(135deg,#c7e6ff,#8b9eff)}.pink{background:linear-gradient(135deg,#ffd2e6,#e7baff)}.gold{background:linear-gradient(135deg,#fff0ad,#ffc56e)}.sample{width:104px;height:138px;border:7px solid #fff;border-radius:52px 52px 10px 10px;box-shadow:0 10px 25px #3333;position:relative;background:linear-gradient(140deg,#f2bda0,#4c4ba8)}.sample:before{content:"";position:absolute;width:39px;height:43px;border-radius:50%;background:#e8b28e;top:23px;left:25px;box-shadow:0 -8px 0 5px #35243b}.sample:after{content:"";position:absolute;width:68px;height:55px;border-radius:40px 40px 3px 3px;background:#ffdc8c;bottom:0;left:11px}.tag{position:absolute;bottom:12px;left:12px;background:#ffffffdf;border-radius:8px;padding:5px 8px;font-size:10px;font-weight:900;letter-spacing:.7px}.body{padding:15px}.title{font-weight:850;margin:0 0 6px}.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px}.body .btn{width:100%;margin-top:13px}.empty{grid-column:1/-1;padding:36px;text-align:center;border:1px dashed #d6dbea;border-radius:16px;color:var(--muted);background:#fff}.cta{margin:52px 0 38px;padding:30px 34px;border-radius:22px;background:#eeedff;display:flex;align-items:center;justify-content:space-between;gap:18px}.cta h2{margin:0 0 4px}.cta p{margin:0;color:#636b82}.footer{background:#fff;border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}.footerrow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.backdrop{display:none;position:fixed;inset:0;background:#12152bb8;z-index:20;align-items:center;justify-content:center;padding:18px}.backdrop.show{display:flex}.modal{width:min(760px,100%);max-height:92vh;overflow:auto;background:white;border-radius:22px;padding:25px;box-shadow:0 25px 80px #0003}.modal.narrow{width:min(500px,100%)}.modalhead{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}.modalhead h2{margin:0;font-size:24px}.close{width:36px;height:36px;border:0;border-radius:10px;background:#f0f1f7;font-size:22px}.field{display:grid;gap:6px;margin:13px 0}.field label{font-size:13px;font-weight:800}.field input,.field select{width:100%;padding:12px;border:1px solid #dfe2ec;border-radius:11px;outline-color:var(--brand);background:#fff}.hint{font-size:12px;color:var(--muted)}.editorgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.preview{min-height:270px;border-radius:15px;background:#f1f2f8;display:grid;place-items:center;padding:12px;overflow:hidden}.preview canvas{max-width:100%;max-height:440px;object-fit:contain}.tabs{display:flex;gap:8px;margin-bottom:16px}.tab{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:white;font-weight:750}.tab.active{background:#eeedff;color:var(--brand);border-color:#d6d0ff}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#172033;color:#fff;padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);z-index:40;display:none}.toast.show{display:block}.userbadge{font-size:12px;color:var(--green);font-weight:800}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.navlinks{gap:12px}.hero-panel{padding:36px;grid-template-columns:1fr .7fr}.art{transform:scale(.85)}}@media(max-width:620px){.wrap{padding:0 16px}.nav{height:65px;gap:12px}.search{display:none}.navlinks{display:none}.mobile{display:block;margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px}.nav>.btn{padding:10px 12px;font-size:12px}.hero{padding-top:20px}.hero-panel{grid-template-columns:1fr;padding:29px 23px}.hero h1{font-size:43px}.hero p{font-size:15px}.art{height:165px;transform:scale(.75);margin-top:-5px}.grid{gap:11px}.thumb{height:145px}.body{padding:11px}.title{font-size:13px}.meta{font-size:11px}.cta{align-items:flex-start;flex-direction:column;padding:24px}.editorgrid{grid-template-columns:1fr}.modal{padding:19px}.sectionhead h2{font-size:22px}}
+
+.brandline{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.7px;line-height:1.2}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:18px 0 36px}
+.service{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 4px 20px #1c204008}
+.serviceicon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:#eeedff;color:var(--brand);font-size:22px;margin-bottom:13px}
+.service h3{margin:0 0 7px;font-size:16px}.service p{margin:0;color:var(--muted);font-size:13px}
+.aboutpanel{border-radius:22px;background:#fff;border:1px solid var(--line);padding:28px;margin:32px 0 10px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.aboutpanel h2{margin:0 0 8px}.aboutpanel p{margin:0;color:var(--muted)}
+.aboutlist{display:grid;grid-template-columns:1fr 1fr;gap:10px}.aboutitem{background:#f7f7ff;padding:12px;border-radius:12px;font-size:13px;font-weight:750}
+@media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.services{grid-template-columns:1fr 1fr;gap:10px}.service{padding:15px}.aboutpanel{grid-template-columns:1fr;padding:20px}.aboutlist{grid-template-columns:1fr 1fr}.logo small{font-size:8px!important}}
+
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="#"><span class="mark">✦</span><span>Lakshtech<small style="display:block;font-size:10px;line-height:1.1;letter-spacing:.6px;color:#69758a;font-weight:750">TECH SOLUTION PROVIDER</small></span></a><div class="search"><input id="search" placeholder="फ्रेम या कैंपेन खोजें…" aria-label="कैंपेन खोजें"></div><nav class="navlinks"><a href="#explore">एक्सप्लोर</a><a href="#" id="dashboardLink">मेरा डैशबोर्ड</a><a href="#about">जानकारी</a></nav><button class="btn" id="startTop">＋ कैंपेन बनाएँ</button><button class="mobile" id="mobileSearch" aria-label="Search">⌕</button></div></header>
+<main><section class="hero"><div class="wrap"><div class="hero-panel"><div><div class="eyebrow">TECH SOLUTION PROVIDER</div><h1>Technology<br>that moves you.</h1><p>Lakshtech आपके व्यवसाय और विचारों के लिए वेबसाइट, डिजिटल डिजाइन, सॉफ्टवेयर समाधान और स्मार्ट ऑनलाइन टूल बनाने में मदद करता है।</p><div class="actions"><button class="btn" id="startHero">＋ कैंपेन बनाएँ</button><a class="btn soft" href="#services">हमारी सेवाएँ ↓</a></div></div><div class="art"><span class="star a">✦</span><div class="float"></div><div class="float two"></div><div class="mock"></div><span class="star b">✧</span></div></div></div></section>
+
+<section class="wrap" id="services">
+  <div class="sectionhead"><div><h2>Lakshtech की सेवाएँ</h2><p>आपके काम को आसान बनाने वाले भरोसेमंद टेक समाधान।</p></div></div>
+  <div class="services">
+    <article class="service"><div class="serviceicon">⌘</div><h3>वेबसाइट डेवलपमेंट</h3><p>बिज़नेस वेबसाइट, पोर्टफोलियो, लैंडिंग पेज और मोबाइल-फ्रेंडली वेब ऐप।</p></article>
+    <article class="service"><div class="serviceicon">▦</div><h3>सॉफ्टवेयर और डैशबोर्ड</h3><p>डेटा मैनेजमेंट, रिपोर्टिंग, एडमिन पैनल और काम के अनुसार डिजिटल सिस्टम।</p></article>
+    <article class="service"><div class="serviceicon">✦</div><h3>ग्राफिक और डिजिटल डिजाइन</h3><p>ब्रांडिंग, सोशल मीडिया क्रिएटिव, पोस्टर, बैनर और फोटो फ्रेम डिजाइन।</p></article>
+    <article class="service"><div class="serviceicon">↗</div><h3>ऑटोमेशन और इंटीग्रेशन</h3><p>ऑनलाइन फॉर्म, डेटाबेस, API कनेक्शन और रोज़मर्रा के कामों का ऑटोमेशन।</p></article>
+  </div>
+  <div class="aboutpanel">
+    <div><div class="eyebrow" style="color:var(--brand)">ABOUT LAKSHTECH</div><h2>टेक्नोलॉजी, आपके लक्ष्य के लिए।</h2><p>Lakshtech एक Tech Solution Provider ब्रांड है। हमारा उद्देश्य लोगों, संस्थाओं और व्यवसायों को उनकी जरूरत के अनुसार उपयोगी डिजिटल समाधान उपलब्ध कराने में मदद करना है।</p></div>
+    <div class="aboutlist"><div class="aboutitem">✓ मोबाइल-फ्रेंडली डिजाइन</div><div class="aboutitem">✓ जरूरत के अनुसार समाधान</div><div class="aboutitem">✓ साफ और आसान अनुभव</div><div class="aboutitem">✓ आगे बढ़ने योग्य सिस्टम</div></div>
+  </div>
+</section>
+
+<section class="wrap" id="explore"><div class="sectionhead"><div><h2>कैंपेन देखें</h2><p>अपनी कहानी के लिए सही फ्रेम चुनें।</p></div><button class="btn soft small" id="showAll">सभी देखें</button></div><div class="filters"><button class="chip active" data-category="All">सभी कैंपेन</button><button class="chip" data-category="Community">समुदाय</button><button class="chip" data-category="Celebration">उत्सव</button><button class="chip" data-category="Awareness">जागरूकता</button><button class="chip" data-category="Culture">संस्कृति</button></div><div class="grid" id="campaignGrid"></div></section>
+<section class="wrap"><div class="cta"><div><h2>आपका कैंपेन यहाँ से शुरू होता है।</h2><p>फ्रेम अपलोड करें, फोटो तैयार करें और अपना संदेश साझा करें।</p></div><button class="btn" id="startBottom">अपना फ्रेम बनाएँ →</button></div></section></main>
+<footer class="footer" id="about"><div class="wrap footerrow"><div><strong style="color:var(--ink)">✦ Lakshtech</strong><div>Tech Solution Provider</div><div>Website · Software · Digital Design</div></div><div>सेवाएँ · कैंपेन · डिजिटल समाधान · संपर्क</div><div>आपके विचारों को डिजिटल रूप देने में मदद।</div></div></footer>
+<div class="backdrop" id="authModal"><div class="modal narrow"><div class="modalhead"><h2 id="authTitle">lakhtech में आपका स्वागत है</h2><button class="close" data-close="authModal">×</button></div><div class="tabs"><button class="tab active" id="loginTab">लॉगिन</button><button class="tab" id="signupTab">अकाउंट बनाएँ</button></div><form id="authForm"><div class="field" id="nameField" hidden><label for="authName">आपका नाम</label><input id="authName" maxlength="70" autocomplete="name" placeholder="पूरा नाम"></div><div class="field"><label for="authईमेल">ईमेल</label><input id="authईमेल" type="email" required autocomplete="email" placeholder="you@example.com"></div><div class="field"><label for="authपासवर्ड">पासवर्ड</label><input id="authपासवर्ड" type="password" required minlength="6" autocomplete="current-password" placeholder="कम से कम 6 अक्षर"></div><p class="hint">सुरक्षित लॉगिन के लिए आपका अकाउंट Supabase से जुड़ा होगा।</p><button class="btn" style="width:100%" id="authSubmit">लॉगिन</button></form></div></div>
+<div class="backdrop" id="campaignModal"><div class="modal"><div class="modalhead"><h2>कैंपेन बनाएँ</h2><button class="close" data-close="campaignModal">×</button></div><form id="campaignForm"><div class="editorgrid"><div><div class="field"><label for="campaignName">कैंपेन का नाम</label><input id="campaignName" required maxlength="70" placeholder="e.g. Community Pride 2026"></div><div class="field"><label for="campaignश्रेणी">श्रेणी</label><select id="campaignश्रेणी"><option>Community</option><option>Celebration</option><option>Awareness</option><option>Culture</option></select></div><div class="field"><label for="frameUpload">फ्रेम ओवरले (PNG बेहतर है)</label><input id="frameUpload" type="file" accept="image/png,image/webp,image/jpeg"><span class="hint">ट्रांसपेरेंट PNG सबसे अच्छा काम करता है। खाली छोड़ने पर नमूना फ्रेम इस्तेमाल होगा।</span></div><div class="field"><label for="photoUpload">आपकी फोटो</label><input id="photoUpload" type="file" accept="image/*"><span class="hint">फोटो चुनें, प्रीव्यू देखें और तैयार PNG डाउनलोड करें।</span></div><div class="field"><label for="frameFit">फोटो का आकार</label><select id="frameFit"><option value="cover">फोटो एरिया भरें</option><option value="contain">पूरी फोटो दिखाएँ</option></select></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:17px"><button type="button" class="btn ghost" id="resetEditor">प्रीव्यू रीसेट करें</button><button type="submit" class="btn">कैंपेन सेव करें</button></div></div><div><div class="preview" id="previewBox"><div class="sample"></div></div><div style="display:flex;gap:9px;margin-top:12px;flex-wrap:wrap"><button type="button" class="btn soft" id="downloadBtn">PNG डाउनलोड करें</button><button type="button" class="btn ghost" id="downloadFrameBtn">फ्रेम डाउनलोड करें</button></div><p class="hint">The image is composited in your browser. आपकी फोटो is not uploaded to a server by this demo.</p></div></div></form></div></div>
+<div class="backdrop" id="dashboardModal"><div class="modal narrow"><div class="modalhead"><h2>मेरा डैशबोर्ड</h2><button class="close" data-close="dashboardModal">×</button></div><div id="userStatus" class="hint"></div><div id="dashboardList" style="margin-top:12px"></div><div style="display:flex;gap:9px;margin-top:18px;flex-wrap:wrap"><button class="btn" id="dashboardCreate">＋ कैंपेन बनाएँ</button><button class="btn ghost" id="logoutBtn">लॉगआउट</button></div><p class="hint" style="margin-top:16px">कैंपेन आपके ऑनलाइन डेटाबेस में सेव होंगे और आपके अकाउंट से जुड़े रहेंगे।</p></div></div>
+<div class="backdrop" id="viewModal"><div class="modal narrow"><div class="modalhead"><h2 id="viewTitle">कैंपेन</h2><button class="close" data-close="viewModal">×</button></div><div class="preview" id="viewPreview"><div class="sample"></div></div><p id="viewMeta" class="hint"></p><div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:15px"><button class="btn" id="useCampaign">यह फ्रेम इस्तेमाल करें</button><button class="btn ghost" data-close="viewModal">Close</button></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const KEY='lakhtech_campaigns_v1',USER='lakhtech_demo_user_v1',ACCOUNTS='lakhtech_demo_accounts_v1';
+const seed=[{id:'s1',name:'Together We Rise',category:'Community',supports:128,color:'purple',tag:'COMMUNITY'},{id:'s2',name:'Celebrate Every Story',category:'Celebration',supports:96,color:'orange',tag:'CELEBRATION'},{id:'s3',name:'Keep Our Roots Alive',category:'Culture',supports:84,color:'green',tag:'CULTURE'},{id:'s4',name:'A Voice for Change',category:'Awareness',supports:72,color:'blue',tag:'AWARENESS'},{id:'s5',name:'Pride in Every Colour',category:'Community',supports:63,color:'pink',tag:'PRIDE'},{id:'s6',name:'Festival of Hope',category:'Celebration',supports:51,color:'gold',tag:'FESTIVAL'},{id:'s7',name:'Our Culture, Our Future',category:'Culture',supports:43,color:'purple',tag:'CULTURE'},{id:'s8',name:'Small Acts, Big Change',category:'Awareness',supports:38,color:'green',tag:'AWARENESS'}];
+let campaigns=loadCampaigns(),category='All',authMode='login',currentView=null,frameImage=null,photoImage=null,canvas=document.createElement('canvas');
+const $=id=>document.getElementById(id);
+function loadCampaigns(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return []}}
+function saveCampaigns(){localStorage.setItem(KEY,JSON.stringify(campaigns))}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function openModal(id){$(id).classList.add('show')}function closeModal(id){$(id).classList.remove('show')}
+function signedIn(){try{return JSON.parse(localStorage.getItem(USER))}catch{return null}}
+function requireAuth(next){if(!signedIn()){authMode='login';setAuthMode();openModal('authModal');toast('Please log in to continue.');return false}return true}
+function render(){const q=$('search').value.trim().toLowerCase(),items=[...campaigns,...seed].filter((c,i,a)=>a.findIndex(x=>x.id===c.id)===i).filter(c=>(category==='All'||c.category===category)&&(`${c.name} ${c.category}`.toLowerCase().includes(q)));const grid=$('campaignGrid');grid.innerHTML='';if(!items.length){grid.innerHTML='<div class="empty">No campaigns match. Try another keyword or category.</div>';return}items.forEach(c=>{const el=document.createElement('article');el.className='campaign';el.innerHTML=`<div class="thumb ${c.color||'purple'}"><div class="sample"></div><span class="tag">${escapeHtml(c.tag||c.category.toUpperCase())}</span></div><div class="body"><p class="title">${escapeHtml(c.name)}</p><div class="meta"><span>${escapeHtml(c.category)}</span><span>♥ ${Number(c.supports)||0} supports</span></div><button class="btn soft small" style="width:100%;margin-top:13px" data-view="${escapeHtml(c.id)}">View campaign</button></div>`;grid.appendChild(el)});grid.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>viewCampaign(items.find(c=>c.id===b.dataset.view)))}
+function setश्रेणी(c){category=c;document.querySelectorAll('[data-category]').forEach(b=>b.classList.toggle('active',b.dataset.category===c));render()}
+function setAuthMode(){const signup=authMode==='signup';$('authTitle').textContent=signup?'Create your lakhtech account':'lakhtech में आपका स्वागत है';$('nameField').hidden=!signup;$('authName').required=signup;$('authपासवर्ड').autocomplete=signup?'new-password':'current-password';$('authSubmit').textContent=signup?'अकाउंट बनाएँ':'लॉगिन';$('loginTab').classList.toggle('active',!signup);$('signupTab').classList.toggle('active',signup)}
+function renderDashboard(){const u=signedIn();$('userStatus').innerHTML=u?`Signed in as <strong>${escapeHtml(u.name||u.email)}</strong> <span class="userbadge">· Demo account</span>`:'You are browsing as a guest.';const own=campaigns.filter(c=>u&&c.owner===u.email);$('dashboardList').innerHTML=own.length?own.map(c=>`<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)"><div><strong>${escapeHtml(c.name)}</strong><div class="hint">${escapeHtml(c.category)}</div></div><button class="btn ghost small" data-del="${escapeHtml(c.id)}">Delete</button></div>`).join(''):'<div class="empty">No campaigns yet. Create your first one.</div>';$('dashboardList').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{campaigns=campaigns.filter(c=>c.id!==b.dataset.del);saveCampaigns();render();renderDashboard();toast('Campaign deleted')})}
+function viewCampaign(c){if(!c)return;currentView=c;$('viewTitle').textContent=c.name;$('viewMeta').textContent=`${c.category} · ${c.supports||0} supports`;const box=$('viewPreview');box.innerHTML=`<div class="thumb ${c.color||'purple'}" style="width:100%;height:240px;border-radius:12px"><div class="sample"></div><span class="tag">${escapeHtml(c.tag||c.category.toUpperCase())}</span></div>`;openModal('viewModal')}
+function loadImg(file){return new Promise((resolve,reject)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Image could not be opened'))};img.src=url})}
+function sampleFrame(){const c=document.createElement('canvas');c.width=800;c.height=1000;const x=c.getContext('2d');x.clearRect(0,0,800,1000);x.lineWidth=34;x.strokeStyle='#f6d56e';x.strokeRect(18,18,764,964);x.lineWidth=12;x.strokeStyle='#fff';x.strokeRect(42,42,716,916);x.fillStyle='#392a82';x.font='bold 38px system-ui';x.textAlign='center';x.fillText(($('campaignName').value||'LAKSH TECH').toUpperCase().slice(0,28),400,914);
+x.font='bold 18px system-ui';x.fillStyle='#ffffff';x.fillText('LAKSH TECH  •  TECH SOLUTION PROVIDER',400,965);x.fillStyle='#f6d56e';[[72,72],[728,72],[72,928],[728,928]].forEach(([a,b])=>{x.beginPath();x.arc(a,b,12,0,Math.PI*2);x.fill()});return c}
+function drawPreview(){const box=$('previewBox');box.innerHTML='';const ctx=canvas.getContext('2d');let w=800,h=1000;if(photoImage){const ratio=photoImage.width/photoImage.height;h=1000;w=Math.max(1,Math.round(h*ratio));if(w>1000){w=1000;h=Math.round(w/ratio)}}canvas.width=w;canvas.height=h;if(photoImage){const fit=$('frameFit').value,scale=fit==='contain'?Math.min(w/photoImage.width,h/photoImage.height):Math.max(w/photoImage.width,h/photoImage.height),dw=photoImage.width*scale,dh=photoImage.height*scale;ctx.drawImage(photoImage,(w-dw)/2,(h-dh)/2,dw,dh)}else{ctx.fillStyle='#edeaff';ctx.fillRect(0,0,w,h);ctx.fillStyle='#5a49e8';ctx.font='bold 34px system-ui';ctx.textAlign='center';ctx.fillText('Upload a photo',w/2,h/2)}const frame=frameImage||sampleFrame();ctx.drawImage(frame,0,0,w,h);const shown=document.createElement('canvas');shown.width=canvas.width;shown.height=canvas.height;shown.getContext('2d').drawImage(canvas,0,0);box.appendChild(shown)}
+async function readFile(id,kind){const file=$(id).files[0];if(!file){if(kind==='frame')frameImage=null;else photoImage=null;drawPreview();return}if(file.size>12*1024*1024){toast('Please choose an image smaller than 12 MB.');$(id).value='';return}try{const img=await loadImg(file);if(kind==='frame')frameImage=img;else photoImage=img;drawPreview()}catch{toast('Could not read that image file.')}}
+function downloadCanvas(){try{const link=document.createElement('a');link.download='lakhtech-frame.png';link.href=canvas.toDataURL('image/png');link.click();toast('PNG download started')}catch{toast('Could not export image. Try a smaller photo.')}}
+function resetEditor(){$('campaignForm').reset();frameImage=null;photoImage=null;drawPreview()}
+$('startTop').onclick=$('startHero').onclick=$('startBottom').onclick=()=>{if(!requireAuth())return;resetEditor();openModal('campaignModal')};
+$('dashboardLink').onclick=e=>{e.preventDefault();renderDashboard();openModal('dashboardModal')};
+$('dashboardCreate').onclick=()=>{closeModal('dashboardModal');if(requireAuth()){resetEditor();openModal('campaignModal')}};
+$('logoutBtn').onclick=()=>{localStorage.removeItem(USER);closeModal('dashboardModal');toast('Logged out');updateNav()};
+function updateNav(){const u=signedIn();$('dashboardLink').textContent=u?`Hi, ${(u.name||u.email.split('@')[0]).slice(0,14)}`:'My Dashboard'}
+$('loginTab').onclick=()=>{authMode='login';setAuthMode()};$('signupTab').onclick=()=>{authMode='signup';setAuthMode()};
+$('authForm').onsubmit=e=>{e.preventDefault();const email=$('authईमेल').value.trim().toLowerCase(),password=$('authपासवर्ड').value,name=$('authName').value.trim();let accounts={};try{accounts=JSON.parse(localStorage.getItem(ACCOUNTS))||{}}catch{}if(authMode==='signup'){if(!name){toast('Enter your name');return}if(accounts[email]){toast('An account with this email already exists');return}accounts[email]={name,password};localStorage.setItem(ACCOUNTS,JSON.stringify(accounts));localStorage.setItem(USER,JSON.stringify({email,name}));toast('Demo account created')}else{if(!accounts[email]||accounts[email].password!==password){toast('ईमेल/password not found in this browser. Create a demo account first.');return}localStorage.setItem(USER,JSON.stringify({email,name:accounts[email].name}));toast('Logged in successfully')}closeModal('authModal');e.target.reset();updateNav()};
+$('campaignForm').onsubmit=e=>{e.preventDefault();if(!requireAuth())return;const u=signedIn(),name=$('campaignName').value.trim();if(!name)return;const cat=$('campaignश्रेणी').value,color={Community:'purple',Celebration:'orange',Awareness:'blue',Culture:'green'}[cat];const item={id:'c'+Date.now(),name,category:cat,supports:0,color,tag:cat.toUpperCase(),owner:u.email,createdAt:new Date().toISOString()};campaigns.unshift(item);saveCampaigns();render();renderDashboard();closeModal('campaignModal');toast('Campaign saved in this browser');};
+$('frameUpload').onchange=()=>readFile('frameUpload','frame');$('photoUpload').onchange=()=>readFile('photoUpload','photo');$('frameFit').onchange=drawPreview;$('downloadBtn').onclick=downloadCanvas;$('downloadFrameBtn').onclick=()=>{const f=frameImage||sampleFrame();const a=document.createElement('a');a.download='lakhtech-frame-overlay.png';a.href=f.toDataURL('image/png');a.click();toast('Frame overlay download started')};$('resetEditor').onclick=resetEditor;
+$('useCampaign').onclick=()=>{closeModal('viewModal');if(requireAuth()){resetEditor();$('campaignName').value=currentView?.name||'';openModal('campaignModal')}};
+$('search').oninput=render;$('mobileSearch').onclick=()=>{const q=prompt('Search campaigns');if(q!==null){$('search').value=q;render();$('explore').scrollIntoView({behavior:'smooth'})}};
+$('showAll').onclick=()=>setश्रेणी('All');document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>setश्रेणी(b.dataset.category));document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeModal(b.dataset.close));document.querySelectorAll('.backdrop').forEach(b=>b.onclick=e=>{if(e.target===b)b.classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.backdrop.show').forEach(m=>m.classList.remove('show'))});
+drawPreview();render();updateNav();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./supabase-config.js"></script>
+<script>
+/* Lakhtech production integration layer. Configure supabase-config.js first. */
+(() => {
+  const CONFIG = window.LAKHTECH_CONFIG || {};
+  const hasConfig = Boolean(CONFIG.url && CONFIG.anonKey &&
+    !String(CONFIG.url).includes("YOUR_PROJECT") &&
+    !String(CONFIG.anonKey).includes("YOUR_PUBLIC"));
+  const client = (hasConfig && window.supabase?.createClient)
+    ? window.supabase.createClient(CONFIG.url, CONFIG.anonKey, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+      }) : null;
+
+  let currentUser = null;
+  let dbCampaigns = [];
+  let activeCategory = "All";
+  const $ = id => document.getElementById(id);
+  const toastMsg = message => {
+    const node = $("toast");
+    node.textContent = message;
+    node.classList.add("show");
+    window.setTimeout(() => node.classList.remove("show"), 3200);
+  };
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, c =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+  const showModal = id => $(id)?.classList.add("show");
+  const hideModal = id => $(id)?.classList.remove("show");
+  const colorFor = category => ({
+    Community:"purple", Celebration:"orange", Awareness:"blue", Culture:"green"
+  }[category] || "purple");
+
+  // Show a clear setup warning rather than silently using insecure localStorage auth.
+  if (!client) {
+    const banner = document.createElement("div");
+    banner.style.cssText = "position:relative;z-index:5;background:#fff4d6;color:#624b08;padding:10px 18px;text-align:center;font-size:13px;font-weight:700";
+    banner.textContent = "सेटअप बाकी है: supabase-config.js में अपने Supabase Project URL और सार्वजनिक anon/publishable key भरें।";
+    document.body.insertBefore(banner, document.body.firstChild);
+  }
+
+  function updateAuthUI() {
+    const link = $("dashboardLink");
+    if (link) link.textContent = currentUser ? `मेरा डैशबोर्ड (${currentUser.email})` : "मेरा डैशबोर्ड";
+    const status = $("userStatus");
+    if (status) status.innerHTML = currentUser
+      ? `लॉगिन: <strong>${esc(currentUser.email)}</strong>`
+      : "आप लॉगिन नहीं हैं।";
+    const logout = $("logoutBtn");
+    if (logout) logout.style.display = currentUser ? "" : "none";
+  }
+
+  async function getSessionUser() {
+    if (!client) return;
+    const { data, error } = await client.auth.getSession();
+    if (error) console.error(error);
+    currentUser = data?.session?.user || null;
+    updateAuthUI();
+  }
+
+  async function fetchCampaigns() {
+    if (!client) return;
+    const { data, error } = await client
+      .from("campaigns")
+      .select("id,name,category,description,frame_storage_path,is_published,created_at,owner_id")
+      .eq("is_published", true)
+      .order("created_at", { ascending: false })
+      .limit(100);
+    if (error) {
+      console.error("Campaign list:", error);
+      toastMsg("कैंपेन लोड नहीं हुए। SQL स्कीमा और RLS नीतियाँ जाँचें।");
+      return;
+    }
+    dbCampaigns = (data || []).map(c => {
+      let frame_url = null;
+      if (c.frame_storage_path) {
+        const { data: urlData } = client.storage.from("campaign-frames").getPublicUrl(c.frame_storage_path);
+        frame_url = urlData?.publicUrl || null;
+      }
+      return {
+        id:c.id, name:c.name, category:c.category, description:c.description,
+        frame_storage_path:c.frame_storage_path, frame_url, is_published:c.is_published,
+        owner_id:c.owner_id, supports:0, color:colorFor(c.category), tag:c.category.toUpperCase()
+      };
+    });
+    renderCampaigns();
+  }
+
+  function renderCampaigns() {
+    const query = ($("search")?.value || "").trim().toLowerCase();
+    const combined = [...dbCampaigns, ...seedCampaigns()];
+    const unique = combined.filter((c, i, arr) => arr.findIndex(x => x.id === c.id) === i);
+    const filtered = unique.filter(c =>
+      (activeCategory === "All" || c.category === activeCategory) &&
+      (`${c.name} ${c.category}`.toLowerCase().includes(query))
+    );
+    const grid = $("campaignGrid");
+    grid.innerHTML = "";
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="empty">कोई कैंपेन नहीं मिला। दूसरा शब्द या श्रेणी चुनें।</div>';
+      return;
+    }
+    filtered.forEach(c => {
+      const card = document.createElement("article");
+      card.className = "campaign";
+      const frame = c.frame_url
+        ? `<img src="${esc(c.frame_url)}" alt="कैंपेन फ्रेम" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:10px">`
+        : '<div class="sample"></div>';
+      card.innerHTML = `<div class="thumb ${esc(c.color || "purple")}">${frame}<span class="tag">${esc(c.tag || c.category)}</span></div>
+        <div class="body"><p class="title">${esc(c.name)}</p>
+        <div class="meta"><span>${esc(c.category)}</span><span>lakhtech</span></div>
+        <button class="btn soft small" style="width:100%;margin-top:13px" data-db-view="${esc(c.id)}">कैंपेन देखें</button></div>`;
+      grid.appendChild(card);
+    });
+    grid.querySelectorAll("[data-db-view]").forEach(button => {
+      button.onclick = () => openCampaignDetails(filtered.find(c => c.id === button.dataset.dbView));
+    });
+  }
+
+  function seedCampaigns() {
+    return [
+      {id:"sample-community",name:"साथ मिलकर आगे बढ़ें",category:"Community",supports:0,color:"purple",tag:"समुदाय"},
+      {id:"sample-celebration",name:"हर कहानी का उत्सव",category:"Celebration",supports:0,color:"orange",tag:"उत्सव"},
+      {id:"sample-culture",name:"अपनी संस्कृति, अपना गौरव",category:"Culture",supports:0,color:"green",tag:"संस्कृति"},
+      {id:"sample-awareness",name:"बदलाव की आवाज़",category:"Awareness",supports:0,color:"blue",tag:"जागरूकता"}
+    ];
+  }
+
+  function openCampaignDetails(campaign) {
+    if (!campaign) return;
+    window.currentLakhtechCampaign = campaign;
+    $("viewTitle").textContent = campaign.name;
+    $("viewMeta").textContent = campaign.category;
+    const box = $("viewPreview");
+    box.innerHTML = campaign.frame_url
+      ? `<img src="${esc(campaign.frame_url)}" alt="फ्रेम प्रीव्यू" style="max-width:100%;max-height:420px;object-fit:contain">`
+      : `<div class="thumb ${esc(campaign.color || "purple")}" style="width:100%;height:240px;border-radius:12px"><div class="sample"></div></div>`;
+    showModal("viewModal");
+  }
+
+  function requireLogin() {
+    if (!client) { toastMsg("पहले supabase-config.js सेटअप करें।"); return false; }
+    if (!currentUser) {
+      $("authTitle").textContent = "lakhtech में लॉगिन करें";
+      showModal("authModal");
+      return false;
+    }
+    return true;
+  }
+
+  // Supabase email/password auth. No passwords are stored by this frontend.
+  $("loginTab").onclick = () => {
+    $("authForm").dataset.mode = "login";
+    $("authTitle").textContent = "lakhtech में लॉगिन करें";
+    $("nameField").hidden = true; $("authName").required = false;
+    $("authPassword").autocomplete = "current-password";
+    $("authSubmit").textContent = "लॉगिन";
+    $("loginTab").classList.add("active"); $("signupTab").classList.remove("active");
+  };
+  $("signupTab").onclick = () => {
+    $("authForm").dataset.mode = "signup";
+    $("authTitle").textContent = "नया अकाउंट बनाएँ";
+    $("nameField").hidden = false; $("authName").required = true;
+    $("authPassword").autocomplete = "new-password";
+    $("authSubmit").textContent = "अकाउंट बनाएँ";
+    $("signupTab").classList.add("active"); $("loginTab").classList.remove("active");
+  };
+  $("authForm").dataset.mode = "login";
+  $("authForm").onsubmit = async event => {
+    event.preventDefault();
+    if (!client) { toastMsg("Supabase कॉन्फ़िगरेशन जोड़ना बाकी है।"); return; }
+    const email = $("authEmail").value.trim();
+    const password = $("authPassword").value;
+    const mode = $("authForm").dataset.mode || "login";
+    $("authSubmit").disabled = true;
+    try {
+      let result;
+      if (mode === "signup") {
+        result = await client.auth.signUp({
+          email, password,
+          options: { data: { display_name: $("authName").value.trim() } }
+        });
+        if (!result.error && !result.data.session) {
+          toastMsg("ईमेल पर पुष्टि लिंक भेजा गया है। पुष्टि के बाद लॉगिन करें।");
+          return;
+        }
+      } else {
+        result = await client.auth.signInWithPassword({ email, password });
+      }
+      if (result.error) throw result.error;
+      currentUser = result.data.user || result.data.session?.user || null;
+      hideModal("authModal");
+      updateAuthUI();
+      await fetchCampaigns();
+      toastMsg(mode === "signup" ? "अकाउंट बन गया।" : "लॉगिन सफल रहा।");
+    } catch (error) {
+      console.error(error);
+      toastMsg(error.message || "लॉगिन में समस्या आई।");
+    } finally {
+      $("authSubmit").disabled = false;
+    }
+  };
+
+  $("startTop").onclick = $("startHero").onclick = $("startBottom").onclick = () => {
+    if (!requireLogin()) return;
+    $("campaignForm").reset(); window.frameImage = null; window.photoImage = null;
+    if (typeof resetEditor === "function") resetEditor();
+    showModal("campaignModal");
+  };
+  $("dashboardLink").onclick = async event => {
+    event.preventDefault();
+    if (!requireLogin()) return;
+    await renderDashboard();
+    showModal("dashboardModal");
+  };
+  $("dashboardCreate").onclick = () => {
+    hideModal("dashboardModal");
+    if (requireLogin()) { if (typeof resetEditor === "function") resetEditor(); showModal("campaignModal"); }
+  };
+  $("logoutBtn").onclick = async () => {
+    if (client) {
+      const { error } = await client.auth.signOut();
+      if (error) { toastMsg(error.message); return; }
+    }
+    currentUser = null; dbCampaigns = []; updateAuthUI(); renderCampaigns();
+    hideModal("dashboardModal"); toastMsg("आप लॉगआउट हो गए हैं।");
+  };
+
+  async function renderDashboard() {
+    updateAuthUI();
+    if (!client || !currentUser) return;
+    const { data, error } = await client.from("campaigns")
+      .select("id,name,category,is_published,created_at")
+      .eq("owner_id", currentUser.id).order("created_at", { ascending:false });
+    if (error) { toastMsg("डैशबोर्ड लोड नहीं हुआ: " + error.message); return; }
+    const list = $("dashboardList");
+    if (!data?.length) {
+      list.innerHTML = '<div class="empty">अभी कोई कैंपेन नहीं है। पहला कैंपेन बनाएँ।</div>';
+      return;
+    }
+    list.innerHTML = data.map(c => `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)">
+      <div><strong>${esc(c.name)}</strong><div class="hint">${esc(c.category)} · ${c.is_published ? "प्रकाशित" : "ड्राफ्ट"}</div></div>
+      <button class="btn ghost small" data-delete-campaign="${esc(c.id)}">हटाएँ</button></div>`).join("");
+    list.querySelectorAll("[data-delete-campaign]").forEach(button => button.onclick = async () => {
+      if (!confirm("क्या आप यह कैंपेन हटाना चाहते हैं?")) return;
+      const { error: deleteError } = await client.from("campaigns").delete().eq("id", button.dataset.deleteCampaign);
+      if (deleteError) { toastMsg(deleteError.message); return; }
+      await fetchCampaigns(); await renderDashboard(); toastMsg("कैंपेन हटा दिया गया।");
+    });
+  }
+
+  // Upload only the frame overlay. A user's personal photo stays in the browser.
+  $("campaignForm").onsubmit = async event => {
+    event.preventDefault();
+    if (!requireLogin()) return;
+    const name = $("campaignName").value.trim();
+    const category = $("campaignCategory").value;
+    if (!name) { toastMsg("कैंपेन का नाम लिखें।"); return; }
+    const submit = $("campaignForm").querySelector('button[type="submit"]');
+    submit.disabled = true;
+    try {
+      let storagePath = null;
+      const file = $("frameUpload").files[0];
+      if (file) {
+        if (!["image/png","image/webp","image/jpeg"].includes(file.type)) throw new Error("फ्रेम PNG, WEBP या JPEG होना चाहिए।");
+        if (file.size > 8 * 1024 * 1024) throw new Error("फ्रेम फ़ाइल 8 MB से छोटी होनी चाहिए।");
+        const extension = file.type === "image/jpeg" ? "jpg" : file.type.split("/")[1];
+        storagePath = `${currentUser.id}/${crypto.randomUUID()}.${extension}`;
+        const { error: uploadError } = await client.storage.from("campaign-frames").upload(storagePath, file, {
+          cacheControl:"3600", upsert:false, contentType:file.type
+        });
+        if (uploadError) throw uploadError;
+      }
+      const { data, error } = await client.from("campaigns").insert({
+        owner_id:currentUser.id, name, category,
+        description:"", frame_storage_path:storagePath, is_published:true
+      }).select("id").single();
+      if (error) {
+        if (storagePath) await client.storage.from("campaign-frames").remove([storagePath]);
+        throw error;
+      }
+      hideModal("campaignModal");
+      await fetchCampaigns(); await renderDashboard();
+      toastMsg("कैंपेन ऑनलाइन सेव हो गया।");
+    } catch (error) {
+      console.error(error);
+      toastMsg(error.message || "कैंपेन सेव नहीं हो पाया। SQL और Storage सेटअप जाँचें।");
+    } finally { submit.disabled = false; }
+  };
+
+  $("useCampaign").onclick = () => {
+    const c = window.currentLakhtechCampaign;
+    hideModal("viewModal");
+    if (!requireLogin()) return;
+    if (typeof resetEditor === "function") resetEditor();
+    if (c) $("campaignName").value = c.name;
+    showModal("campaignModal");
+  };
+  $("search").oninput = renderCampaigns;
+  $("showAll").onclick = () => {
+    activeCategory = "All";
+    document.querySelectorAll("[data-category]").forEach(b => b.classList.toggle("active", b.dataset.category === "All"));
+    renderCampaigns();
+  };
+  document.querySelectorAll("[data-category]").forEach(b => b.onclick = () => {
+    activeCategory = b.dataset.category;
+    document.querySelectorAll("[data-category]").forEach(x => x.classList.toggle("active", x === b));
+    renderCampaigns();
+  });
+  $("mobileSearch").onclick = () => {
+    const q = prompt("कैंपेन खोजें");
+    if (q !== null) { $("search").value = q; renderCampaigns(); $("explore").scrollIntoView({behavior:"smooth"}); }
+  };
+
+  // Hide outdated demo-only text and make photo/frame editor labels accurate.
+  document.querySelectorAll("#authForm .hint").forEach(n => n.textContent =
+    "यह लॉगिन Supabase Auth इस्तेमाल करता है। पासवर्ड इस वेबसाइट के कोड या localStorage में सेव नहीं किया जाता।");
+  document.querySelectorAll("#dashboardModal .hint").forEach(n => {
+    if (n.textContent.includes("browser") || n.textContent.includes("ब्राउज़र")) n.textContent =
+      "आपके कैंपेन Supabase डेटाबेस में सेव होते हैं और आपके अकाउंट से जुड़े रहते हैं।";
+  });
+
+  if (client) {
+    client.auth.onAuthStateChange((_event, session) => {
+      currentUser = session?.user || null;
+      updateAuthUI();
+      // Avoid making another Supabase call directly inside the auth callback.
+      setTimeout(() => { if (currentUser) fetchCampaigns(); else { dbCampaigns=[]; renderCampaigns(); } }, 0);
+    });
+    getSessionUser().then(fetchCampaigns);
+  } else {
+    updateAuthUI();
+    renderCampaigns();
+  }
+})();
+</script>
+
+</body></html>
