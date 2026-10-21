@@ -1,22 +1,20 @@
-# Lakshtech Frame Studio
+# Lakshtech Frame Studio — Custom Frame Upload
 
-A simple, mobile-first Hindi frame editor prototype for community events.
+Simple mobile-friendly photo frame editor prototype for community events.
 
 ## Included
-- `index.html`: home page, frame gallery, local photo editor, event creation/share-link UI.
-- `backend/schema.sql`: Supabase tables and starter RLS policies for events and submissions.
-- `backend/supabase-config.example.js`: safe frontend config template (publishable/anon key only).
-- `vercel.json`: basic Vercel configuration.
+- Simple frame gallery and photo positioning/zoom controls
+- Upload your own image design as a custom frame (transparent PNG recommended)
+- Apply custom frame to the local photo editor and export a PNG
+- Event creation/share-link demo UI
+- Supabase starter schema and example configuration
+- Vercel configuration
 
-## Important: current event link mode
-The event creation UI currently makes a demo URL and stores event metadata in the browser's local storage. It is **not yet a cross-device/live event link system**. For real sharing, connect Supabase using the project URL and publishable key, create events in `frame_events`, and resolve public event links by `slug`. Photo uploads should use a Supabase Storage bucket with carefully configured policies; never expose a service-role key in browser code.
+## Run
+Open `index.html` in a browser, or deploy this folder to Vercel.
 
-## Setup
-1. Create/open your Supabase project.
-2. Run `backend/schema.sql` in Supabase SQL Editor.
-3. Create a private or appropriately policy-restricted storage bucket for user uploads. Review storage policies before collecting real photos.
-4. Add Supabase URL and publishable/anon key to your frontend config and wire the event create/load/submit functions to Supabase.
-5. Deploy the folder containing `index.html` to Vercel.
+## Important limits
+Custom frame upload currently runs in the browser and is not yet uploaded to cloud storage. The event link creation is still demo/local and will not make a custom frame available to every visitor/device until Supabase Storage + database persistence and public event page loading are connected. Do not put a Supabase service-role key in frontend code; use only the publishable/anon key and secure Row Level Security policies.
 
-## Privacy
-This product handles people's photos. Tell users how photos are used, collect only what is needed, allow deletion, and set upload size/type limits. Public event links should use unguessable IDs and should not expose organizer-only submissions.
+## Custom design tips
+Use a 3:4 PNG (for example 600 × 800) with a transparent opening where the visitor's photo should show through. The frame is drawn on top of the photo.
