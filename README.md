@@ -1,21 +1,20 @@
-# Lakshtech Frame Editor Backend
+# Lakshtech Frame Studio — Simple UI Prototype
 
-Backend setup for a MyFrame-style photo/frame editor using Supabase and Vercel.
+A visual-first Hindi frame editor intended for users with varied digital literacy.
 
-## Included features
-- Supabase Auth (email/password)
-- Public frame template catalog
-- Per-user saved designs metadata
-- Private user design exports bucket (optional)
-- Row Level Security policies
-- Vercel deployment configuration
+## Run locally
+Open `index.html` in a modern browser. No build step is required.
 
-## Setup
-1. In Supabase Dashboard → SQL Editor, run `backend/schema-frame-editor.sql`.
-2. In Supabase Authentication → Providers, enable Email. Configure email confirmation as desired.
-3. Ensure the root `supabase-config.js` has your project URL and publishable key. Never put a service-role/secret key in browser files.
-4. Deploy the project root to Vercel. For a static frontend, no server-side secret is required for the included Supabase operations.
-5. Add frame template records and upload PNG overlays to the `frame-templates` storage bucket. Use transparent PNGs for overlays.
+## Included interactions
+- Browse sample frames by category
+- Select a frame
+- Upload a local photo
+- Adjust zoom and brightness
+- Drag the photo to reposition it
+- Download the framed profile image as PNG
 
-## Important
-This is a backend scaffold, not a claim that the app has been deployed or that auth/storage have been tested against your live Supabase project. Portrait processing should remain in the browser unless you intentionally build a private upload workflow.
+## Important current limitations
+This is a frontend prototype. The event-link button is a demo notice; it does not yet create public event pages. User accounts, frame management, saved projects, multi-user uploads, shareable campaign links, cloud storage, moderation, and Supabase persistence need to be connected and tested before production use.
+
+## Vercel
+Import this folder/repository into Vercel as a static site. `index.html` is the entry page. For the best deployment workflow, upload the folder to a Git repository and import it in Vercel.
