@@ -1,4 +1,4 @@
-# lakhtech — Supabase + Vercel starter (हिंदी)
+# Lakshtech — Supabase + Vercel starter (हिंदी)
 
 ## इसमें क्या है
 - `index.html`: मोबाइल-अनुकूल वेबसाइट, Supabase ईमेल/पासवर्ड लॉगिन/रजिस्ट्रेशन, सार्वजनिक कैंपेन गैलरी, डैशबोर्ड, फोटो/फ्रेम प्रीव्यू और PNG डाउनलोड।
@@ -8,8 +8,7 @@
 
 ## 1. Supabase कॉन्फ़िगर करें
 1. Supabase Dashboard में अपना प्रोजेक्ट खोलें।
-2. Project Settings → API में Project URL और `anon`/publishable key कॉपी करें।
-3. `supabase-config.js` में `YOUR_PROJECT_REF` और `YOUR_PUBLIC_ANON_OR_PUBLISHABLE_KEY` बदलें।
+2. `supabase-config.js` में आपके दिए गए Project URL और सार्वजनिक publishable key पहले से भर दिए गए हैं। यदि आपने key rotate की है, तो यहाँ नई सार्वजनिक key अपडेट करें।
 4. Supabase Dashboard → SQL Editor खोलें, `schema.sql` की पूरी सामग्री चलाएँ।
 5. Authentication → URL Configuration में बाद में अपनी Vercel वेबसाइट का URL `Site URL` और Redirect URLs में जोड़ें।
 6. Authentication → Providers में Email provider चालू रखें। परीक्षण के दौरान ईमेल पुष्टि चालू हो तो signup के बाद ईमेल से पुष्टि करनी होगी।
