@@ -1,4 +1,6 @@
-// Copy to supabase-config.js and fill in your Supabase project URL + publishable/anon key.
-// Never put a service_role key in frontend JavaScript.
-export const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-export const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY';
+// Copy to supabase-config.js and fill in your project URL and public publishable/anon key.
+// Never put a service_role or secret key in frontend JavaScript.
+window.LAKHTECH_CONFIG = {
+  url: 'https://YOUR_PROJECT.supabase.co',
+  anonKey: 'YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY'
+};
